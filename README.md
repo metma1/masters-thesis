@@ -21,5 +21,5 @@ ImageJ download page: [link](https://imagej.net/ij/download.html)
 Iterates over a whole strain folder and generates the necessary data from two .tif section images for further processing and groups them in a folder.
 
 
-## Other recources
+## Other resources
 Google Drive folder with the strain folders containing example section images and model simulation results: [link](https://drive.google.com/drive/folders/1s5FahRhtLXPPjGtBNqd1eofk7OXduhBy?usp=sharing)
