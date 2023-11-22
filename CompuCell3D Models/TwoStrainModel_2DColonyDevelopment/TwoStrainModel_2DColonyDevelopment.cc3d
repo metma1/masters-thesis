@@ -1,0 +1,8 @@
+<Simulation version="4.4.1">
+   <XMLScript Type="XMLScript">Simulation/TwoStrainModel_2DColonyDevelopment.xml</XMLScript>
+   <PythonScript Type="PythonScript">Simulation/TwoStrainModel_2DColonyDevelopment.py</PythonScript>
+   <Resource Type="Python">Simulation/InitialConcentrations.py</Resource>
+   <Resource Type="Python">Simulation/TwoStrainModel_2DColonyDevelopmentSteppables.py</Resource>
+   <Resource Type="Python">Simulation/gif_maker.py</Resource>
+   <Resource Type="Python">Simulation/parameters.py</Resource>
+</Simulation>

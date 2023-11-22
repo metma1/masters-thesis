@@ -1,0 +1,82 @@
+# Simulation Notes
+'''   '''
+
+# Simulation Modes
+ECM_Production = True
+Agar_Drying = True
+Decreasing_Nutrient = False
+Random_Cell_Position = True
+
+# Model dimensions
+Xdim = 600
+Ydim = 120
+Zdim = 1
+
+# Initial values for diffusion fields
+Initial_Nutrient = 150.0
+Minimum_Nutrient = 50
+Initial_Oxygen = 50.0
+
+# Agar thickness in pixels
+Agar_Thickness = 20
+Agar_Cell_Width = 50
+
+# ECM parameters
+InitEcm_targetVolume = 10
+ECM_lambdaVolume = 10.0
+ECM_secretion_time = 19
+
+# Initial yeast cell placements
+Start_Point = 187
+End_Point = 412
+Cell_Number = 32
+S1_to_S2_Ratio = 0.0 # between 0.0 and 1.0
+'''****************************************************************************************************************************************'''
+# Shared parameters by both strains
+
+# Parameters influencing the rate of cell targetVolume increase
+Conversion_Rate = 0.0004
+Growth_Rate = 0.3 # 0.15
+
+# Ratio of active/passive cell metabolism
+AP_Metabolism_Ratio = 0.5
+AF_Metabolism_Ratio = 0.5
+
+# Time spent under threshold before cell type switchting
+Threshold_Time_Limit = 20
+
+# Initial target attributes
+InitActiveCell_targetVolume = 20
+
+InitCell_lambdaVolume = 80.0
+Cell_Target_Pressure = 40
+
+# Cell division volume dependence
+CellDiv_Volume_Ratio = 1.5
+'''*****************************************************************************************************************************************'''
+# Strain Parameters
+
+# Strain 2
+
+# How much better can S2 use the uptaken nutrient and oxygen to increase it's volume compared to S1
+Growth_Rate_Modifier = 1.3
+
+# How much dose the current pressure of the cell influence the targetVolume increase
+S2_Pressure_Dependence = 1.8
+
+# How high the contact enregy goes with agar with time
+S2_Max_Agar_Contact = 24
+
+# Thresholds for Active/Passive cell status swtiching
+S2_AP_Nutrient_Threshold = 9.0
+
+# Threshold for Passive/Fermenting cell status switching
+S2_AF_Oxygen_Threshold = 6.0
+
+# Threshold for Fermenting/Passive cell states switching
+S2_FP_Nutrient_Threshold = 6.0
+
+# Threshold for Passive/Dead cell status switchting
+S2_PD_Oxygen_Threshold = 6.0
+S2_PD_Nutrient_Threshold = 5.0
+'''*****************************************************************************************************************************************'''

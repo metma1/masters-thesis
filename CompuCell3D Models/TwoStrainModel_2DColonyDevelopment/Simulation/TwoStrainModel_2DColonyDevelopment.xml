@@ -1,0 +1,324 @@
+<CompuCell3D Revision="3" Version="4.4.1">
+   
+   <!-- <Metadata> -->
+      
+      <!-- &lt;!&ndash; Basic properties simulation &ndash;&gt;  -->
+      <!-- <NumberOfProcessors>1</NumberOfProcessors> -->
+      <!-- <DebugOutputFrequency>10</DebugOutputFrequency> -->
+      <!-- &lt;!&ndash; <NonParallelModule Name="Potts"/> &ndash;&gt;  -->
+   <!-- </Metadata> -->
+<Metadata>
+   <NumberOfProcessors>8</NumberOfProcessors>
+</Metadata>
+   
+   <Potts>
+      
+      <!-- Basic properties of CPM (GGH) algorithm -->
+      <Dimensions x="600" y="120" z="1"/>
+      <Steps>1141</Steps>
+      <Temperature>10.0</Temperature>
+      <NeighborOrder>1</NeighborOrder>
+   </Potts>
+   
+   <Plugin Name="CellType">
+      
+      <!-- Listing all cell types in the simulation -->
+      <CellType TypeId="0" TypeName="Medium"/>
+      <CellType TypeId="1" TypeName="Agar"/>
+      <CellType TypeId="2" TypeName="ECM"/>
+      
+      <CellType TypeId="3" TypeName="S1_Active"/>
+      <CellType TypeId="4" TypeName="S1_Passive"/>
+      <CellType TypeId="5" TypeName="S1_Dead"/>
+      <CellType TypeId="6" TypeName="S1_Ferment"/>
+      
+      <CellType TypeId="7" TypeName="S2_Active"/>
+      <CellType TypeId="8" TypeName="S2_Passive"/>
+      <CellType TypeId="9" TypeName="S2_Dead"/>
+      <CellType TypeId="10" TypeName="S2_Ferment"/>
+   </Plugin>
+   
+   <Plugin Name="Volume"/>
+   
+   <Plugin Name="ExternalPotential">
+      
+      <Algorithm>PixelBased</Algorithm>
+      <ExternalPotentialParameters CellType="Agar" x="0.0" y="0.0" z="0.0"/>
+      <ExternalPotentialParameters CellType="ECM" x="0.0" y="0.0" z="0.0"/>
+      <ExternalPotentialParameters CellType="S1_Active" x="0.0" y="0.0" z="0.0"/>
+      <ExternalPotentialParameters CellType="S1_Passive" x="0.0" y="0.0" z="0.0"/>
+      <ExternalPotentialParameters CellType="S1_Dead" x="0.0" y="0.0" z="0.0"/>
+      <ExternalPotentialParameters CellType="S1_Ferment" x="0.0" y="0.0" z="0.0"/>
+      <ExternalPotentialParameters CellType="S2_Active" x="0.0" y="0.0" z="0.0"/>
+      <ExternalPotentialParameters CellType="S2_Passive" x="0.0" y="0.0" z="0.0"/>
+      <ExternalPotentialParameters CellType="S2_Dead" x="0.0" y="0.0" z="0.0"/>
+      <ExternalPotentialParameters CellType="S2_Ferment" x="0.0" y="0.0" z="0.0"/>
+   </Plugin>
+   
+   <Plugin Name="CenterOfMass">
+      
+      <!-- Module tracking center of mass of each cell -->
+   </Plugin>
+   
+   <Plugin Name="NeighborTracker">
+      
+      <!-- Module tracking neighboring cells of each cell -->
+   </Plugin>
+   
+   <Plugin Name="PixelTracker">
+      
+      <!-- Module tracking pixels of each cell -->
+   </Plugin>
+   
+   <Plugin Name="BoundaryPixelTracker">
+      
+      <!-- Module tracking boundary pixels of each cell -->
+      <NeighborOrder>1</NeighborOrder>
+   </Plugin>
+   
+   <Plugin Name="Contact">
+      <!-- Specification of adhesion energies -->
+      <Energy Type1="Medium" Type2="Medium">50.0</Energy>
+      <Energy Type1="Medium" Type2="Agar">30.0</Energy>
+      <Energy Type1="Medium" Type2="ECM">10.0</Energy>
+      <Energy Type1="Medium" Type2="S1_Active">10.0</Energy>
+      <Energy Type1="Medium" Type2="S1_Passive">10.0</Energy>
+      <Energy Type1="Medium" Type2="S1_Dead">10.0</Energy>
+      <Energy Type1="Medium" Type2="S1_Ferment">15.0</Energy>
+      <Energy Type1="Medium" Type2="S2_Active">4.0</Energy>
+      <Energy Type1="Medium" Type2="S2_Passive">4.0</Energy>
+      <Energy Type1="Medium" Type2="S2_Dead">4.0</Energy>
+      <Energy Type1="Medium" Type2="S2_Ferment">15.0</Energy>
+      
+      <Energy Type1="Agar" Type2="Agar">0.0</Energy>
+      <Energy Type1="Agar" Type2="ECM">10.0</Energy>
+      <Energy Type1="Agar" Type2="S1_Active" id="agar_s1a_energy">14.0</Energy>
+      <Energy Type1="Agar" Type2="S1_Passive" id="agar_s1p_energy">14.0</Energy>
+      <Energy Type1="Agar" Type2="S1_Dead" id="agar_s1d_energy">14.0</Energy>
+      <Energy Type1="Agar" Type2="S1_Ferment" id="agar_s1f_energy">12.0</Energy>
+      <Energy Type1="Agar" Type2="S2_Active" id="agar_s2a_energy">16.0</Energy>
+      <Energy Type1="Agar" Type2="S2_Passive" id="agar_s2p_energy">16.0</Energy>
+      <Energy Type1="Agar" Type2="S2_Dead" id="agar_s2d_energy">16.0</Energy>
+      <Energy Type1="Agar" Type2="S2_Ferment" id="agar_s2f_energy">10.0</Energy>
+      
+      <Energy Type1="ECM" Type2="ECM">2.0</Energy>
+      <Energy Type1="ECM" Type2="S1_Active">6.0</Energy>
+      <Energy Type1="ECM" Type2="S1_Passive">6.0</Energy>
+      <Energy Type1="ECM" Type2="S1_Dead">6.0</Energy>
+      <Energy Type1="ECM" Type2="S1_Ferment">3.0</Energy>
+      <Energy Type1="ECM" Type2="S2_Active">6.0</Energy>
+      <Energy Type1="ECM" Type2="S2_Passive">6.0</Energy>
+      <Energy Type1="ECM" Type2="S2_Dead">6.0</Energy>
+      <Energy Type1="ECM" Type2="S2_Ferment">3.0</Energy>
+      
+      <Energy Type1="S1_Active" Type2="S1_Active">7.0</Energy>
+      <Energy Type1="S1_Active" Type2="S1_Passive">7.0</Energy>
+      <Energy Type1="S1_Active" Type2="S1_Dead">7.0</Energy>
+      <Energy Type1="S1_Active" Type2="S1_Ferment">9.0</Energy>
+      <Energy Type1="S1_Active" Type2="S2_Active">14.0</Energy>
+      <Energy Type1="S1_Active" Type2="S2_Passive">14.0</Energy>
+      <Energy Type1="S1_Active" Type2="S2_Dead">14.0</Energy>
+      <Energy Type1="S1_Active" Type2="S2_Ferment">16.0</Energy>
+      
+      <Energy Type1="S1_Passive" Type2="S1_Passive">7.0</Energy>
+      <Energy Type1="S1_Passive" Type2="S1_Dead">7.0</Energy>
+      <Energy Type1="S1_Passive" Type2="S1_Ferment">9.0</Energy>
+      <Energy Type1="S1_Passive" Type2="S2_Active">14.0</Energy>
+      <Energy Type1="S1_Passive" Type2="S2_Passive">14.0</Energy>
+      <Energy Type1="S1_Passive" Type2="S2_Dead">14.0</Energy>
+      <Energy Type1="S1_Passive" Type2="S2_Ferment">16.0</Energy>
+      
+      <Energy Type1="S1_Dead" Type2="S1_Dead">7.0</Energy>
+      <Energy Type1="S1_Dead" Type2="S1_Ferment">9.0</Energy>
+      <Energy Type1="S1_Dead" Type2="S2_Active">14.0</Energy>
+      <Energy Type1="S1_Dead" Type2="S2_Passive">14.0</Energy>
+      <Energy Type1="S1_Dead" Type2="S2_Dead">14.0</Energy>
+      <Energy Type1="S1_Dead" Type2="S2_Ferment">16.0</Energy>
+      
+      <Energy Type1="S1_Ferment" Type2="S1_Ferment">11.0</Energy>
+      <Energy Type1="S1_Ferment" Type2="S2_Active">12.0</Energy>
+      <Energy Type1="S1_Ferment" Type2="S2_Passive">12.0</Energy>
+      <Energy Type1="S1_Ferment" Type2="S2_Dead">12.0</Energy>
+      <Energy Type1="S1_Ferment" Type2="S2_Ferment">14.0</Energy>
+      
+      <Energy Type1="S2_Active" Type2="S2_Active">17.0</Energy>
+      <Energy Type1="S2_Active" Type2="S2_Passive">17.0</Energy>
+      <Energy Type1="S2_Active" Type2="S2_Dead">17.0</Energy>
+      <Energy Type1="S2_Active" Type2="S2_Ferment">19.0</Energy>
+      
+      <Energy Type1="S2_Passive" Type2="S2_Passive">17.0</Energy>
+      <Energy Type1="S2_Passive" Type2="S2_Dead">17.0</Energy>
+      <Energy Type1="S2_Passive" Type2="S2_Ferment">19.0</Energy>
+      
+      <Energy Type1="S2_Dead" Type2="S2_Dead">17.0</Energy>
+      <Energy Type1="S2_Dead" Type2="S2_Ferment">17.0</Energy>
+      
+      <Energy Type1="S2_Ferment" Type2="S2_Ferment">20.0</Energy>
+      <NeighborOrder>4</NeighborOrder>
+   </Plugin>
+   
+   <Plugin Name="ContactInternal">
+      <!-- Specification of internal adhesion energies -->
+      <Energy Type1="Medium" Type2="Medium">50.0</Energy>
+      <Energy Type1="Medium" Type2="Agar">10.0</Energy>
+      <Energy Type1="Medium" Type2="ECM">10.0</Energy>
+      <Energy Type1="Medium" Type2="S1_Active">10.0</Energy>
+      <Energy Type1="Medium" Type2="S1_Passive">10.0</Energy>
+      <Energy Type1="Medium" Type2="S1_Dead">10.0</Energy>
+      <Energy Type1="Medium" Type2="S1_Ferment">10.0</Energy>
+      <Energy Type1="Medium" Type2="S2_Active">2.0</Energy>
+      <Energy Type1="Medium" Type2="S2_Passive">2.0</Energy>
+      <Energy Type1="Medium" Type2="S2_Dead">2.0</Energy>
+      <Energy Type1="Medium" Type2="S2_Ferment">10.0</Energy>
+      
+      <Energy Type1="Agar" Type2="Agar">0.0</Energy>
+      <Energy Type1="Agar" Type2="ECM">10.0</Energy>
+      <Energy Type1="Agar" Type2="S1_Active">13.0</Energy>
+      <Energy Type1="Agar" Type2="S1_Passive">13.0</Energy>
+      <Energy Type1="Agar" Type2="S1_Dead">13.0</Energy>
+      <Energy Type1="Agar" Type2="S1_Ferment">8.0</Energy>
+      <Energy Type1="Agar" Type2="S2_Active">16.0</Energy>
+      <Energy Type1="Agar" Type2="S2_Passive">16.0</Energy>
+      <Energy Type1="Agar" Type2="S2_Dead">16.0</Energy>
+      <Energy Type1="Agar" Type2="S2_Ferment">8.0</Energy>
+      
+      <Energy Type1="ECM" Type2="ECM">2.0</Energy>
+      <Energy Type1="ECM" Type2="S1_Active">6.0</Energy>
+      <Energy Type1="ECM" Type2="S1_Passive">6.0</Energy>
+      <Energy Type1="ECM" Type2="S1_Dead">6.0</Energy>
+      <Energy Type1="ECM" Type2="S1_Ferment">3.0</Energy>
+      <Energy Type1="ECM" Type2="S2_Active">6.0</Energy>
+      <Energy Type1="ECM" Type2="S2_Passive">6.0</Energy>
+      <Energy Type1="ECM" Type2="S2_Dead">6.0</Energy>
+      <Energy Type1="ECM" Type2="S2_Ferment">3.0</Energy>
+      
+      <Energy Type1="S1_Active" Type2="S1_Active">3.0</Energy>
+      <Energy Type1="S1_Active" Type2="S1_Passive">3.0</Energy>
+      <Energy Type1="S1_Active" Type2="S1_Dead">3.0</Energy>
+      <Energy Type1="S1_Active" Type2="S1_Ferment">5.0</Energy>
+      <Energy Type1="S1_Active" Type2="S2_Active">3.0</Energy>
+      <Energy Type1="S1_Active" Type2="S2_Passive">3.0</Energy>
+      <Energy Type1="S1_Active" Type2="S2_Dead">3.0</Energy>
+      <Energy Type1="S1_Active" Type2="S2_Ferment">5.0</Energy>
+      
+      <Energy Type1="S1_Passive" Type2="S1_Passive">3.0</Energy>
+      <Energy Type1="S1_Passive" Type2="S1_Dead">3.0</Energy>
+      <Energy Type1="S1_Passive" Type2="S1_Ferment">5.0</Energy>
+      <Energy Type1="S1_Passive" Type2="S2_Active">3.0</Energy>
+      <Energy Type1="S1_Passive" Type2="S2_Passive">3.0</Energy>
+      <Energy Type1="S1_Passive" Type2="S2_Dead">3.0</Energy>
+      <Energy Type1="S1_Passive" Type2="S2_Ferment">5.0</Energy>
+      
+      <Energy Type1="S1_Dead" Type2="S1_Dead">3.0</Energy>
+      <Energy Type1="S1_Dead" Type2="S1_Ferment">5.0</Energy>
+      <Energy Type1="S1_Dead" Type2="S2_Active">3.0</Energy>
+      <Energy Type1="S1_Dead" Type2="S2_Passive">3.0</Energy>
+      <Energy Type1="S1_Dead" Type2="S2_Dead">3.0</Energy>
+      <Energy Type1="S1_Dead" Type2="S2_Ferment">5.0</Energy>
+      
+      <Energy Type1="S1_Ferment" Type2="S1_Ferment">3.0</Energy>
+      <Energy Type1="S1_Ferment" Type2="S2_Active">5.0</Energy>
+      <Energy Type1="S1_Ferment" Type2="S2_Passive">5.0</Energy>
+      <Energy Type1="S1_Ferment" Type2="S2_Dead">5.0</Energy>
+      <Energy Type1="S1_Ferment" Type2="S2_Ferment">3.0</Energy>
+      
+      <Energy Type1="S2_Active" Type2="S2_Active">3.0</Energy>
+      <Energy Type1="S2_Active" Type2="S2_Passive">3.0</Energy>
+      <Energy Type1="S2_Active" Type2="S2_Dead">3.0</Energy>
+      <Energy Type1="S2_Active" Type2="S2_Ferment">5.0</Energy>
+      
+      <Energy Type1="S2_Passive" Type2="S2_Passive">3.0</Energy>
+      <Energy Type1="S2_Passive" Type2="S2_Dead">3.0</Energy>
+      <Energy Type1="S2_Passive" Type2="S2_Ferment">5.0</Energy>
+      
+      <Energy Type1="S2_Dead" Type2="S2_Dead">3.0</Energy>
+      <Energy Type1="S2_Dead" Type2="S2_Ferment">3.0</Energy>
+      
+      <Energy Type1="S2_Ferment" Type2="S2_Ferment">3.0</Energy>
+      <NeighborOrder>4</NeighborOrder>
+   </Plugin>
+   
+   <Plugin Name="Secretion">
+  
+   </Plugin>
+   
+   <Steppable Type="DiffusionSolverFE">
+      
+      <!-- Specification of PDE solvers -->
+      <DiffusionField Name="Oxygen">
+         <DiffusionData>
+            <FieldName>Oxygen</FieldName>
+            <GlobalDiffusionConstant>30.0</GlobalDiffusionConstant>
+            <GlobalDecayConstant>0.0</GlobalDecayConstant>
+            <!-- Additional options are: -->
+            <ConcentrationFileName>Simulation/InitOxygenContent.txt</ConcentrationFileName> 
+            <DiffusionCoefficient CellType="Agar">0.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="ECM">0.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S1_Active">30.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S1_Passive">30.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S1_Dead">30.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S1_Ferment">30.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S2_Active">30.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S2_Passive">30.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S2_Dead">30.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S2_Ferment">30.0</DiffusionCoefficient>
+
+         </DiffusionData>
+         
+         <BoundaryConditions>
+            <Plane Axis="X">
+               <!-- <ConstantValue PlanePosition="Min" Value="10.0"/> -->
+               <!-- <ConstantValue PlanePosition="Max" Value="5.0"/> -->
+               <!-- Other options are (examples): -->
+               <Periodic/>
+               <!-- <ConstantDerivative PlanePosition="Min" Value="10.0"/> -->
+            </Plane>
+            <Plane Axis="Y">
+               <!-- <ConstantDerivative PlanePosition="Min" Value="10.0"/> -->
+               <!-- <ConstantDerivative PlanePosition="Max" Value="5.0"/> -->
+               <!-- Other options are (examples): -->
+               <!-- <Periodic/> -->
+               <ConstantValue PlanePosition="Max" Value="50.0"/>
+            </Plane>
+         </BoundaryConditions>
+      </DiffusionField>
+      <DiffusionField Name="Nutrient">
+         <DiffusionData>
+            <FieldName>Nutrient</FieldName>
+            <GlobalDiffusionConstant>0.0</GlobalDiffusionConstant>
+            <GlobalDecayConstant>0.0</GlobalDecayConstant>
+            <!-- Additional options are: -->
+            <ConcentrationFileName>Simulation/InitNutrientContent.txt</ConcentrationFileName>
+            <DiffusionCoefficient CellType="Agar">25.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="ECM">8.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S1_Active">10.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S1_Passive">10.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S1_Dead">10.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S1_Ferment">10.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S2_Active">10.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S2_Passive">10.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S2_Dead">10.0</DiffusionCoefficient>
+            <DiffusionCoefficient CellType="S2_Ferment">10.0</DiffusionCoefficient>
+
+         </DiffusionData>
+
+         <BoundaryConditions>
+            <Plane Axis="X">
+               <ConstantValue id="Nutri_X_Min" PlanePosition="Min" Value="150.0"/>
+               <ConstantValue id="Nutri_X_Max" PlanePosition="Max" Value="150.0"/>
+               <!-- Other options are (examples): -->
+               <!-- <Periodic/> -->
+               <!-- <ConstantDerivative PlanePosition="Min" Value="10.0"/> -->
+            </Plane>
+            <Plane Axis="Y">
+               <!-- <ConstantDerivative PlanePosition="Min" Value="10.0"/> -->
+               <!-- <ConstantDerivative PlanePosition="Max" Value="5.0"/> -->
+               <!-- Other options are (examples): -->
+               <!-- <Periodic/> -->
+               <ConstantValue id="Nutri_Y_Min" PlanePosition="Min" Value="150.0"/>
+            </Plane>
+         </BoundaryConditions>
+      </DiffusionField>
+   </Steppable>
+   
+</CompuCell3D>
